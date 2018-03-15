@@ -1,4 +1,4 @@
---README
+# Place to store my thoughts while I work
 
 -Dependencies
 right now the dependicies are: sqlite3 (part of standard library), and websocket
@@ -26,4 +26,3 @@ setup situation:
 
 
 	scraper object setup will be in charge of generating dump objects for us to sort in main
-	

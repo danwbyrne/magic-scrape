@@ -18,10 +18,12 @@ def new_game_table(cursor):
 
 def get_new_id(cursor):
 #use this function to get the next open game_id
-	try: return db_tools.select_values(cursor, 'GAMES', 'MAX(game_id)')[0][0] + 1
-	except TypeError: return 0
-	except: print("Unexpected Error: ", sys.exc_info()[0])
-
+	try: 
+		return db_tools.select_values(cursor, 'GAMES', 'MAX(game_id)')[0][0] + 1
+	except TypeError: 
+		return 0
+	except: 
+		print("Unexpected Error: ", sys.exc_info()[0])
 
 def main():
 	
@@ -30,8 +32,6 @@ def main():
 	curse = conn.cursor()
 
 	setup_default_tables(curse)
-
-
 
 if __name__ == "__main__":
 	
