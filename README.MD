@@ -2,7 +2,7 @@
 
 ```bash
 pipenv install
-pipenv run python src/main.py
+pipenv run python src/scraper.py
 ```
 
 Look Austin dependency management are you proud?
