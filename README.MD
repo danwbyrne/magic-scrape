@@ -1,4 +1,4 @@
-# scrapepract
+#magic-scrape
 
 ```bash
 pipenv install

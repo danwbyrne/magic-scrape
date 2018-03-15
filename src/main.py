@@ -26,8 +26,6 @@ def get_new_id(cursor):
 def main():
 	pass
 
-
-
 if __name__ == "__main__":
 	
 	main()
