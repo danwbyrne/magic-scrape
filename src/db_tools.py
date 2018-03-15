@@ -20,17 +20,17 @@ def insert_into(cursor, table_name, insert_columns):
 #the input column data into the table. You can insert a whole list of column data
 #if you use insert_columns as a list, if not it will just do one.
 
-	#try:
-	if type(insert_columns) == type(list()):
-		foreign_inputs = '(' + ', '.join(['?' for i in range(len(insert_columns[0]))]) + ')'
-		cursor.executemany('INSERT INTO %s VALUES %s' % (table_name, foreign_inputs), insert_columns)
+	try:
+		if type(insert_columns) == type(list()):
+			foreign_inputs = '(' + ', '.join(['?' for i in range(len(insert_columns[0]))]) + ')'
+			cursor.executemany('INSERT INTO %s VALUES %s' % (table_name, foreign_inputs), insert_columns)
 
-	else:
-		foreign_inputs = '('+ ', '.join(['?' for i in range(len(insert_columns))]) + ')'
-		cursor.execute('INSERT INTO %s VALUES %s' % (table_name, insert_columns))
+		else:
+			foreign_inputs = '('+ ', '.join(['?' for i in range(len(insert_columns))]) + ')'
+			cursor.execute('INSERT INTO %s VALUES %s' % (table_name, insert_columns))
 
-	#except:
-	#	print("Unexpected Error: ", sys.exc_info()[0])
+	except:
+		print("Unexpected Error: ", sys.exc_info()[0])
 
 def select_values(cursor, table_name, select_columns, where_clause=False):
 #will take a connection cursor object and table_name and column values
@@ -46,6 +46,8 @@ def select_values(cursor, table_name, select_columns, where_clause=False):
 
 		else:
 			cursor.execute('SELECT %s FROM %s' % (select_statement, table_name))
+
+		return cursor.fetchall()
 
 	except:
 		print("Unexpected Error: ", sys.exc_info()[0])

@@ -1,26 +1,32 @@
-from bs4 import BeautifulSoup
+import time
 import sqlite3
-import dev_database
+import db_tools
+import sys
 
 def setup_default_tables(cursor):
 #setup our User, and Games Tables
-	dev_database.build_table(cursor, 'USERS', ['id', 'games_ids'])
-	dev_database.build_table(cursor, 'GAMES', ['game_id', 'time_utc'])
+	db_tools.build_table(cursor, 'USERS', ['id', 'games_ids'])
+	db_tools.build_table(cursor, 'GAMES', ['game_id', 'max_percent', 'time_utc'])
 
-def new_game_table(cursor, game_id):
-	pass
+def new_game_table(cursor):
+#this one will be used to create our game tables when we get new ones collected
+	game_id = get_new_id(cursor)
+	game_columns = ['user_id', 'bet_value', 'return_value', 'percent_inc']
+	table_title  = 'GAME_' + str(game_id)
+
+	db_tools.build_table(cursor, table_title, game_columns)
+
+def get_new_id(cursor):
+#use this function to get the next open game_id
+	try: return db_tools.select_values(cursor, 'GAMES', 'MAX(game_id)')[0][0] + 1
+	except TypeError: return 0
+	except: print("Unexpected Error: ", sys.exc_info()[0])
 
 
 def main():
-	db = 'test_db.db'
-	conn  = sqlite3.connect(db)
-	curse = conn.cursor()
+	pass
 
-	test_info = [(12, '12'), (14,'14')]
-	dev_database.insert_into(curse, 'GAMES', test_info)
 
-	dev_database.select_values(curse, 'GAMES', '*', where_clause='game_id = 12')
-	print(curse.fetchall())
 
 if __name__ == "__main__":
 	
