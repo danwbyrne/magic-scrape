@@ -24,7 +24,14 @@ def get_new_id(cursor):
 
 
 def main():
-	pass
+	
+	db    = 'magic_db.db'
+	conn  = sqlite3.connect(db)
+	curse = conn.cursor()
+
+	setup_default_tables(curse)
+	
+
 
 if __name__ == "__main__":
 	
