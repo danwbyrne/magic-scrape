@@ -5,7 +5,7 @@ import sys
 
 def setup_default_tables(cursor):
 #setup our User, and Games Tables
-	db_tools.build_table(cursor, 'USERS', ['id', 'games_ids'])
+	db_tools.build_table(cursor, 'USERS', ['id'])
 	db_tools.build_table(cursor, 'GAMES', ['game_id', 'max_percent', 'time_utc'])
 
 def new_game_table(cursor):
@@ -25,6 +25,7 @@ def get_new_id(cursor):
 	except: 
 		print("Unexpected Error: ", sys.exc_info()[0])
 
+
 def main():
 	
 	db    = 'database\magic_db.db'
@@ -33,6 +34,19 @@ def main():
 
 	setup_default_tables(curse)
 
+
+def test():
+	iterator = range(10)
+	while True:
+		for _test in iterator:
+			with open('test_saves\\' + str(_test) + '_test.txt', 'r') as f:
+				print(f.read())
+				f.close()
+				time.sleep(.1)
+
+
+
+
 if __name__ == "__main__":
 	
-	main()
+	test()
