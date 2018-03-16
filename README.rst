@@ -17,8 +17,8 @@ my db_tools library right now is just 3 functions that make sql commands for my 
 
 .. code:: python
 
-	import db_tools
 	import sqlite3
+	import sys
 
 	db     = 'database\magic_db.db'
 	conn   = sqlite3.connect(db)
@@ -65,19 +65,19 @@ It should also be noted that this method of getting the frame data for me requir
 	  if (BEG == false) {
 	    if (frame.indexOf(ocsg) != -1) {
 	        BEG = true;
-	        DATA = DATA + frame + '\n';
+	        DATA = DATA + frame.substring(2) + '\n';
 	    }
 	  }
 	  else {
 	    if (frame.indexOf(oce) != -1) {
 	        BEG = false;
-	        DATA = DATA + frame + '\n';
+	        DATA = DATA + frame.substring(2) + '\n';
 	        console.save(DATA, 'scraped_frames.txt');
 	        DATA = new String();
 	    }
 
 	    else if ((frame.indexOf(oct) == -1) && (frame.indexOf(count) == -1) && (frame.indexOf(chat) == -1) && (frame != 3) && (frame.indexOf(ocs) == -1)) {
-	        DATA = DATA + frame + '\n';         
+	        DATA = DATA + frame.substring(2) + '\n';         
 	    }
 	  }
 	  networkRequest.addFrame(response, time, false);

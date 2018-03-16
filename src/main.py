@@ -1,7 +1,9 @@
 import time
 import sqlite3
 import db_tools
+import parser
 import sys
+import os
 
 def setup_default_tables(cursor):
 #setup our User, and Games Tables
@@ -18,6 +20,7 @@ def new_game_table(cursor):
 
 def get_new_id(cursor):
 #use this function to get the next open game_id
+
 	try: 
 		return db_tools.select_values(cursor, 'GAMES', 'MAX(game_id)')[0][0] + 1
 	except TypeError: 
@@ -25,6 +28,13 @@ def get_new_id(cursor):
 	except: 
 		print("Unexpected Error: ", sys.exc_info()[0])
 
+def get_file_modded(file_name, file_time=None):
+	timestamp = os.path.getmtime(file_name)
+
+	if timestamp != file_time:
+		return timestamp
+	else:
+		return file_time
 
 def main():
 	
@@ -34,19 +44,6 @@ def main():
 
 	setup_default_tables(curse)
 
-
-def test():
-	iterator = range(10)
-	while True:
-		for _test in iterator:
-			with open('test_saves\\' + str(_test) + '_test.txt', 'r') as f:
-				print(f.read())
-				f.close()
-				time.sleep(.1)
-
-
-
-
 if __name__ == "__main__":
 	
-	test()
+	parser.parse_frame_file('frames\\test.txt')
