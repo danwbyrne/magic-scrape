@@ -44,7 +44,7 @@ connecting to the websocket of csgomagic which streams data was my initial endev
 It should also be noted that this method of getting the frame data for me required setting my default save directory to magic-scrape/frames as well as using a third-party chrome extension called 'Downloads Overwrite Existing Files'.
 
 .. code:: javascript
-
+	// 
 	// csgomagic json variables to check what the frame contents are
 	var DATA = new String();
 	var count = '"onlineCount"';
@@ -72,7 +72,7 @@ It should also be noted that this method of getting the frame data for me requir
 	    if (frame.indexOf(oce) != -1) {
 	        BEG = false;
 	        DATA = DATA + frame + '\n';
-	        console.save(DATA, 'test.txt');
+	        console.save(DATA, 'scraped_frames.txt');
 	        DATA = new String();
 	    }
 
@@ -84,3 +84,13 @@ It should also be noted that this method of getting the frame data for me requir
 	  networkRequest.responseReceivedTime = time;
 	  this._updateNetworkRequest(networkRequest);
 	}
+
+Then, using these snippets we can:
+	1. Connect to <csgomagic.com> and login to our steam account to get to the full websocket connection.
+	2. Open Developer Tools for the site.
+	3. Refresh the website to start with a clean websocket connection.
+	4. Open Developer Tools for our Developer Tools (ctrl+shift+j)
+	5. Run the console.save snippet, followed by our custom saveFrameData snippet.
+	6. Watch as the data is collected and saved to our local directory (frames/scraped_frames.txt)
+
+Now to beginning parsing the data and building our database :)
