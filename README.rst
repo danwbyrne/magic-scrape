@@ -86,8 +86,6 @@ It should also be noted that this method of getting the frame data for me requir
 	}
 
 
-How To Run
-----------
 Using these snippets we can:
 	1. Connect to <csgomagic.com> and login to our steam account to get to the full websocket connection.
 	2. Open Developer Tools for the site.
@@ -96,4 +94,4 @@ Using these snippets we can:
 	5. Run the console.save snippet, followed by our custom saveFrameData snippet.
 	6. Watch as the data is collected and saved to our local directory (frames/scraped_frames.txt)
 
-Now to beginning parsing the data and building our database :)
+Now to begin parsing the data and building our database :)
