@@ -86,7 +86,9 @@ It should also be noted that this method of getting the frame data for me requir
 	}
 
 
-Then, using these snippets we can:
+How To Run
+----------
+Using these snippets we can:
 	1. Connect to <csgomagic.com> and login to our steam account to get to the full websocket connection.
 	2. Open Developer Tools for the site.
 	3. Refresh the website to start with a clean websocket connection.
