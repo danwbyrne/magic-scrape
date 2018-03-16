@@ -44,7 +44,7 @@ connecting to the websocket of csgomagic which streams data was my initial endev
 It should also be noted that this method of getting the frame data for me required setting my default save directory to magic-scrape/frames as well as using a third-party chrome extension called 'Downloads Overwrite Existing Files'.
 
 .. code:: javascript
-	// 
+
 	// csgomagic json variables to check what the frame contents are
 	var DATA = new String();
 	var count = '"onlineCount"';
