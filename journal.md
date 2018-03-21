@@ -26,3 +26,6 @@ setup situation:
 
 
 	scraper object setup will be in charge of generating dump objects for us to sort in main
+
+3/20/18
+We have started getting the data and adding it to our database using the text file method. It is working very well and is almost bugless at this point. Time to start work on analyzing the data. I copied some starter test data as a copy of the database called 'test_db.db' so we'll start setting up plotting operations now.
