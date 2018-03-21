@@ -2,11 +2,17 @@
 magic-scrape
 ============
 
+to view analysis:
 .. code:: bash
 
 	pipenv install
-	pipenv run python src\scraper.py
+	pipenv run python src\analysis.py
 
+to collect data:
+.. code:: bash
+	
+	pipenv install
+	pipenv run python src\main.py
 
 db_tools
 ========
@@ -65,7 +71,7 @@ It should also be noted that this method of getting the frame data for me requir
 	  if (BEG == false) {
 	    if (frame.indexOf(ocsg) != -1) {
 	        BEG = true;
-	        DATA = DATA + frame.substring(2) + '\n';
+	        DATA = DATA + Date.now() + '\n';
 	    }
 	  }
 	  else {
@@ -95,3 +101,8 @@ Using these snippets we can:
 	6. Watch as the data is collected and saved to our local directory (frames/scraped_frames.txt)
 
 Now to begin parsing the data and building our database :)
+
+A N A L Y S I S
+===============
+
+beginning work on analyzing our database.

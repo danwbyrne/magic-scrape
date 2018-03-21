@@ -1,6 +1,8 @@
 import sqlite3
 import db_tools
 import matplotlib.pyplot as plt
+import math
+import time
 
 #TIME-SERIES ANALYSIS#
 
@@ -10,11 +12,13 @@ def plot_total_revenue(cursor):
 	ts, ys = [], []
 	for value in data:
 		total += value[1]
-		ts.append(value[0])
+		ts.append(time.ctime(float(value[0])))
 		ys.append(total)
 
 	plt.axhline()
+
 	plt.plot(ts, ys, 'r+')
+	plt.xticks([])
 	plt.show()
 
 def plot_histogram_percs(cursor):
@@ -59,7 +63,7 @@ def plot_test(cursor):
 
 	for value in value_dict.keys():
 		n   = len(value_dict[value])
-		avg = round(sum(value_dict[value]) / float(n),3)
+		avg = round(sum(value_dict[value]) / float(n),2)
 		value_dict[value] = avg
 
 	plt.plot(value_dict.keys(), value_dict.values(), 'r+')
@@ -74,9 +78,16 @@ def main():
 	conn  = sqlite3.connect(db)
 	curse = conn.cursor()
 
-	#plot_total_revenue(curse)
+	plot_total_revenue(curse)
 	#plot_histogram_percs(curse)
-	plot_test(curse)
+	#plot_test(curse)
+
+	bdate = db_tools.select_values(curse, 'GAMES', 'time_utc','game_id=0')
+	edate = db_tools.select_values(curse, 'GAMES', 'MAX(time_utc)')
+	print(time.ctime(float(bdate[0][0])))
+	print(time.ctime(float(edate[0][0])))
+
+
 if __name__ == "__main__":
 	main()
 

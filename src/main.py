@@ -1,7 +1,6 @@
 import time
 import sqlite3
 import db_tools
-import parser
 import sys
 import os
 import json
