@@ -3,12 +3,14 @@ magic-scrape
 ============
 
 to view analysis:
+
 .. code:: bash
 
 	pipenv install
 	pipenv run python src\analysis.py
 
 to collect data:
+
 .. code:: bash
 	
 	pipenv install
