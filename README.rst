@@ -84,7 +84,7 @@ It should also be noted that this method of getting the frame data for me requir
 	        DATA = new String();
 	    }
 
-	    else if ((frame.indexOf(oct) == -1) && (frame.indexOf(count) == -1) && (frame.indexOf(chat) == -1) && (frame != 3) && (frame.indexOf(ocs) == -1)) {
+	    else if ((frame.indexOf('"occ"') != -1) || (frame.indexOf('"opb"') != -1)) {
 	        DATA = DATA + frame.substring(2) + '\n';         
 	    }
 	  }
@@ -92,7 +92,6 @@ It should also be noted that this method of getting the frame data for me requir
 	  networkRequest.responseReceivedTime = time;
 	  this._updateNetworkRequest(networkRequest);
 	}
-
 
 Using these snippets we can:
 	1. Connect to <www.csgomagic.com> and login to our steam account to get to the full websocket connection.

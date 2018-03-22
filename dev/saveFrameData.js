@@ -10,7 +10,7 @@ var ocs = '"ocs"';
 
 var BEG = false;
 
-// This replaces the browser's `webSocketFrameReceived` code with the original code
+// This replaces the browser's `webSocketFrameReceived` code with the original code 
 SDK.NetworkDispatcher.prototype.webSocketFrameReceived = function (requestId, time, response) {
   var networkRequest = this._inflightRequestsById[requestId];
   if (!networkRequest) return;
@@ -29,8 +29,8 @@ SDK.NetworkDispatcher.prototype.webSocketFrameReceived = function (requestId, ti
         DATA = new String();
     }
 
-    else if ((frame.indexOf(oct) == -1) && (frame.indexOf(count) == -1) && (frame.indexOf(chat) == -1) && (frame != 3) && (frame.indexOf(ocs) == -1)) {
-        DATA = DATA + frame.substring(2) + '\n';
+    else if ((frame.indexOf('"occ"') != -1) || (frame.indexOf('"opb"') != -1)) {
+        DATA = DATA + frame.substring(2) + '\n';         
     }
   }
   networkRequest.addFrame(response, time, false);

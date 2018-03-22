@@ -127,6 +127,12 @@ def house_odds(cursor):
 
 	print(round(1.-tot_out/tot_bet,4))
 
+def perc_track(cursor):
+	data = dict(db_tools.select_values(cursor, 'GAMES', 'time_utc, max_percent'))
+	plt.plot(data.keys(), data.values(), 'b.')
+	plt.xticks([])
+	plt.show()
+
 
 
 
@@ -139,7 +145,7 @@ def main():
 	'''plot_total_revenue(curse)
 	plot_test(curse)
 	user_revs(curse)'''
-	house_odds(curse)
+	perc_track(curse)
 
 	bdate = db_tools.select_values(curse, 'GAMES', 'time_utc','game_id=0')
 	edate = db_tools.select_values(curse, 'GAMES', 'MAX(time_utc)')
